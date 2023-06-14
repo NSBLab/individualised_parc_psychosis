@@ -1,0 +1,118 @@
+# This script reformats data from HCP format to BIDS format
+# set up path to where data file in BIDS format is going to be stored
+bids_path=~/kg98/Priscila/GPIP_HCP-EP_clean/data
+
+#grab sub list and define T1w file location
+for s in `cat subjlist.txt` ; do t1_file=/mnt/reference-restricted/hcp_ep/hcp_ep_v1.1/imagingcollection01/${s}_01_MR/unprocessed/T1w_MPR ; \
+#check if the T1 file exists for every subject
+        if [ -f  ${t1_file}/${s}_01_MR_T1w_MPR.nii.gz ] ; then \
+                # change file to BIDS format
+                mkdir -p sub-${s}/anat ; \
+                cp ${t1_file}/${s}_01_MR_T1w_MPR.nii.gz ${bids_path}/sub-${s}/anat ; \
+                mv ${bids_path}/sub-${s}/anat/${s}_01_MR_T1w_MPR.nii.gz ${bids_path}/sub-${s}/anat/sub-${s}_T1w.nii.gz ; \
+                cp ${t1_file}/${s}_01_MR_T1w_MPR.json ${bids_path}/sub-${s}/anat ; \
+                mv ${bids_path}/sub-${s}/anat/${s}_01_MR_T1w_MPR.json ${bids_path}/sub-${s}/anat/sub-${s}_T1w.json ; \
+        fi ; \
+        # set 1st fMRI file path, check if it exists and change it to BIDS format
+        func_file1=/mnt/reference-restricted/hcp_ep/hcp_ep_v1.1/imagingcollection01/${s}_01_MR/unprocessed/rfMRI_REST1_AP/ ; \
+        if [ -f ${func_file1}/${s}_01_MR_rfMRI_REST1_AP.json ] ; then \
+                mkdir -p sub-${s}/func ; \
+                cp ${func_file1}/${s}_01_MR_rfMRI_REST1_AP.nii.gz ${bids_path}/sub-${s}/func ; \
+                mv ${bids_path}/sub-${s}/func/${s}_01_MR_rfMRI_REST1_AP.nii.gz ${bids_path}/sub-${s}/func/sub-${s}_task-rest_run-01_bold.nii.gz ; \
+                cp ${func_file1}/${s}_01_MR_rfMRI_REST1_AP.json ${bids_path}/sub-${s}/func ; \
+                mv ${bids_path}/sub-${s}/func/${s}_01_MR_rfMRI_REST1_AP.json ${bids_path}/sub-${s}/func/sub-${s}_task-rest_run-01_bold.json ; \
+        fi ; \
+        # set 2nd fMRI file path, check if it exists and change it to BIDS format        
+        func_file2=/mnt/reference-restricted/hcp_ep/hcp_ep_v1.1/imagingcollection01/${s}_01_MR/unprocessed/rfMRI_REST1_PA/ ; \
+        if [ -f ${func_file2}/${s}_01_MR_rfMRI_REST1_PA.json ] ; then \
+                mkdir -p sub-${s}/func ; \
+                cp ${func_file2}/${s}_01_MR_rfMRI_REST1_PA.nii.gz ${bids_path}/sub-${s}/func ; \
+                mv ${bids_path}/sub-${s}/func/${s}_01_MR_rfMRI_REST1_PA.nii.gz ${bids_path}/sub-${s}/func/sub-${s}_task-rest_run-02_bold.nii.gz ; \
+                cp ${func_file2}/${s}_01_MR_rfMRI_REST1_PA.json ${bids_path}/sub-${s}/func ; \
+                mv ${bids_path}/sub-${s}/func/${s}_01_MR_rfMRI_REST1_PA.json ${bids_path}/sub-${s}/func/sub-${s}_task-rest_run-02_bold.json ; \
+        fi ; \
+        # set 3rd fMRI file path, check if it exists and change it to BIDS format
+        func_file3=/mnt/reference-restricted/hcp_ep/hcp_ep_v1.1/imagingcollection01/${s}_01_MR/unprocessed/rfMRI_REST2_AP/ ; \
+        if [ -f ${func_file3}/${s}_01_MR_rfMRI_REST2_AP.json ] ; then \
+                mkdir -p sub-${s}/func ; \
+                cp ${func_file3}/${s}_01_MR_rfMRI_REST2_AP.nii.gz ${bids_path}/sub-${s}/func ; \
+                mv ${bids_path}/sub-${s}/func/${s}_01_MR_rfMRI_REST2_AP.nii.gz ${bids_path}/sub-${s}/func/sub-${s}_task-rest_run-03_bold.nii.gz ; \
+                cp ${func_file3}/${s}_01_MR_rfMRI_REST2_AP.json ${bids_path}/sub-${s}/func ; \
+                mv ${bids_path}/sub-${s}/func/${s}_01_MR_rfMRI_REST2_AP.json ${bids_path}/sub-${s}/func/sub-${s}_task-rest_run-03_bold.json ; \
+        fi ; \
+        # set 4th fMRI file path, check if it exists and change it to BIDS format
+        func_file4=/mnt/reference-restricted/hcp_ep/hcp_ep_v1.1/imagingcollection01/${s}_01_MR/unprocessed/rfMRI_REST2_PA/ ; \
+        if [ -f ${func_file4}/${s}_01_MR_rfMRI_REST2_PA.json ] ; then \
+                mkdir -p sub-${s}/func ; \
+                cp ${func_file4}/${s}_01_MR_rfMRI_REST2_PA.nii.gz ${bids_path}/sub-${s}/func ; \
+                mv ${bids_path}/sub-${s}/func/${s}_01_MR_rfMRI_REST2_PA.nii.gz ${bids_path}/sub-${s}/func/sub-${s}_task-rest_run-04_bold.nii.gz ; \
+                cp ${func_file4}/${s}_01_MR_rfMRI_REST2_PA.json ${bids_path}/sub-${s}/func ; \
+                mv ${bids_path}/sub-${s}/func/${s}_01_MR_rfMRI_REST2_PA.json ${bids_path}/sub-${s}/func/sub-${s}_task-rest_run-04_bold.json ; \
+        fi ; \
+        # check if fieldmap exists and change it to BIDS format
+        if [ -f ${func_file1}/${s}_01_MR_SpinEchoFieldMap1_AP.json ] ; then \
+                mkdir -p sub-${s}/fmap ; \
+                cp ${func_file1}/${s}_01_MR_SpinEchoFieldMap1_AP.nii.gz ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap1_AP.nii.gz ${bids_path}/sub-${s}/fmap/sub-${s}_dir-ap_run-01_epi.nii.gz ; \
+                cp ${func_file1}/${s}_01_MR_SpinEchoFieldMap1_AP.json ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap1_AP.json ${bids_path}/sub-${s}/fmap/sub-${s}_dir-ap_run-01_epi.json ; \
+        fi ; \
+        # check if fieldmap exists and change it to BIDS format
+        if [ -f ${func_file1}/${s}_01_MR_SpinEchoFieldMap1_PA.json ] ; then \
+                mkdir -p sub-${s}/fmap ; \
+                cp ${func_file1}/${s}_01_MR_SpinEchoFieldMap1_PA.nii.gz ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap1_PA.nii.gz ${bids_path}/sub-${s}/fmap/sub-${s}_dir-pa_run-01_epi.nii.gz ; \
+                cp ${func_file1}/${s}_01_MR_SpinEchoFieldMap1_PA.json ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap1_PA.json ${bids_path}/sub-${s}/fmap/sub-${s}_dir-pa_run-01_epi.json ; \
+        fi ; \
+        # check if fieldmap exists and change it to BIDS format
+        if [ -f ${func_file2}/${s}_01_MR_SpinEchoFieldMap1_AP.json ] ; then \
+                mkdir -p sub-${s}/fmap ; \
+                cp ${func_file2}/${s}_01_MR_SpinEchoFieldMap1_AP.nii.gz ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap1_AP.nii.gz ${bids_path}/sub-${s}/fmap/sub-${s}_dir-ap_run-02_epi.nii.gz ; \
+                cp ${func_file2}/${s}_01_MR_SpinEchoFieldMap1_AP.json ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap1_AP.json ${bids_path}/sub-${s}/fmap/sub-${s}_dir-ap_run-02_epi.json ; \
+        fi ; \
+        # check if fieldmap exists and change it to BIDS format
+        if [ -f ${func_file2}/${s}_01_MR_SpinEchoFieldMap1_PA.json ] ; then \
+                mkdir -p sub-${s}/fmap ; \
+                cp ${func_file2}/${s}_01_MR_SpinEchoFieldMap1_PA.nii.gz ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap1_PA.nii.gz ${bids_path}/sub-${s}/fmap/sub-${s}_dir-pa_run-02_epi.nii.gz ; \
+                cp ${func_file2}/${s}_01_MR_SpinEchoFieldMap1_PA.json ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap1_PA.json ${bids_path}/sub-${s}/fmap/sub-${s}_dir-pa_run-02_epi.json ; \
+        fi ; \
+        # check if fieldmap exists and change it to BIDS format
+        if [ -f ${func_file3}/${s}_01_MR_SpinEchoFieldMap2_AP.json ] ; then \
+                mkdir -p sub-${s}/fmap ; \
+                cp ${func_file3}/${s}_01_MR_SpinEchoFieldMap2_AP.nii.gz ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap2_AP.nii.gz ${bids_path}/sub-${s}/fmap/sub-${s}_dir-ap_run-03_epi.nii.gz ; \
+                cp ${func_file3}/${s}_01_MR_SpinEchoFieldMap2_AP.json ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap2_AP.json ${bids_path}/sub-${s}/fmap/sub-${s}_dir-ap_run-03_epi.json ; \
+        fi ; \
+        if [ -f ${func_file3}/${s}_01_MR_SpinEchoFieldMap2_PA.json ] ; then \
+                mkdir -p sub-${s}/fmap ; \
+                cp ${func_file3}/${s}_01_MR_SpinEchoFieldMap2_PA.nii.gz ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap2_PA.nii.gz ${bids_path}/sub-${s}/fmap/sub-${s}_dir-pa_run-03_epi.nii.gz ; \
+                cp ${func_file3}/${s}_01_MR_SpinEchoFieldMap2_PA.json ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap2_PA.json ${bids_path}/sub-${s}/fmap/sub-${s}_dir-pa_run-03_epi.json ; \
+        fi ; \
+        # check if fieldmap exists and change it to BIDS format
+        if [ -f ${func_file4}/${s}_01_MR_SpinEchoFieldMap2_AP.json ] ; then \
+                mkdir -p sub-${s}/fmap ; \
+                cp ${func_file4}/${s}_01_MR_SpinEchoFieldMap2_AP.nii.gz ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap2_AP.nii.gz ${bids_path}/sub-${s}/fmap/sub-${s}_dir-ap_run-04_epi.nii.gz ; \
+                cp ${func_file4}/${s}_01_MR_SpinEchoFieldMap2_AP.json ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap2_AP.json ${bids_path}/sub-${s}/fmap/sub-${s}_dir-ap_run-04_epi.json ; \
+        fi ; \
+        # check if fieldmap exists and change it to BIDS format
+        if [ -f ${func_file4}/${s}_01_MR_SpinEchoFieldMap2_PA.json ] ; then \
+                mkdir -p sub-${s}/fmap ; \
+                cp ${func_file4}/${s}_01_MR_SpinEchoFieldMap2_PA.nii.gz ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap2_PA.nii.gz ${bids_path}/sub-${s}/fmap/sub-${s}_dir-pa_run-04_epi.nii.gz ; \
+                cp ${func_file4}/${s}_01_MR_SpinEchoFieldMap2_PA.json ${bids_path}/sub-${s}/fmap ; \
+                mv ${bids_path}/sub-${s}/fmap/${s}_01_MR_SpinEchoFieldMap2_PA.json ${bids_path}/sub-${s}/fmap/sub-${s}_dir-pa_run-04_epi.json ; \
+        fi ; \
+done
+
+
+
