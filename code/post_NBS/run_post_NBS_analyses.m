@@ -1,6 +1,6 @@
-setup = '~/kg98/Priscila/GPIP_HCP-EP_clean/output/setup.mat';
+setup = '/full/path/to/setup/setup.mat';
 % setup = append(setup_par.OUTPUT_DIR,'/setup.mat')
-addpath(genpath('/fs02/kg98/Priscila/GPIP_HCP-EP_clean'));
+addpath(genpath('/full/path/to/directory/with/code/and/utils_fold'));
 
 %% make adjacency matrices 
 [adj_ind, adj_grp] = make_adj_matrix(setup);
