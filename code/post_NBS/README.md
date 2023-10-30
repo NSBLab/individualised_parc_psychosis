@@ -10,7 +10,7 @@ Calls scripts to compare NBS outputs between indivisulaized and froup-based parc
 
 •	**calc_FC_cohens_d** -> calculates effect size (Cohen’s d) of mean difference of FC for every edged between patients and controls.
 
-•	**plot_NBS_tdist** -> plots the distribution of t-values associated with the difference in connectivity strength between patients and controls for both parcellation approaches. It also calculates and plots the shift function comparing the t-distribution for the two parcellations.
+•	**plot_NBS_tdist** -> plots the distribution of t-values associated with the difference in connectivity strength between patients and controls for both parcellation approaches. It also calculates and plots the [shift function](https://garstats.wordpress.com/2016/07/12/shift-function/#:~:text=The%20shift%20function%20describes%20how,one%20distribution%20must%20be%20shifted) comparing the t-distribution for the two parcellations.
 
 ## plot_in_brain (R script):
 You need to install _ggseg_ and _ggplot_ before running this script. It outputs plots of the degree of dysconnectivity per parcel on the brain and of dysconnected edges grouped per network.
