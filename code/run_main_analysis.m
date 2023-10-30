@@ -1,10 +1,10 @@
 % This script calls functions for the analysis comparing the two parcellation,
 clear; clc
 % add to path directories with nescessary function, such as raincloud_plot, read_annotation, mgh_read 
-addpath(genpath('/fs02/kg98/Priscila/GPIP_HCP-EP_clean'));
+addpath(genpath('/full/path/to/code/and/utils/lab'));
 
 % load global variables
-setup = '~/kg98/Priscila/GPIP_HCP-EP_clean/code/MGtest/setup.mat';
+setup = '/full/path/to/setup/setup.mat';
 load(setup);
 
 'setup complete'
