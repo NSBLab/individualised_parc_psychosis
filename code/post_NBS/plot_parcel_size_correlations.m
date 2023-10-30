@@ -10,7 +10,6 @@ load(append(OUTPUT_DIR,'/parcel_size.mat'));
 % calculate degree of dysconnectivity per parcel
 adj_ind = readmatrix(append(OUTPUT_DIR,'/adj_ind.txt'));
 degree = sum(adj_ind);
-degree(1) = []; %%% TODO THIS NEEDS TO BE DELETED ON THE REAL THING - IT'S ONLY HERE BC THE NBS OUTPUTS CORRESPOND TO THE REAL DATA AND DO NOT MATCH THIS TEST DATA
 % calculate correlation between degree of dysonconnectivity and parcel size
 % difference bw patients and controls
 [r_degree, p_degree] = corr(degree', ttest_ind','Type','Spearman');
@@ -19,7 +18,6 @@ degree(1) = []; %%% TODO THIS NEEDS TO BE DELETED ON THE REAL THING - IT'S ONLY 
 % difference bw patients and controls
 load(append(OUTPUT_DIR,'/ind_nbs.mat'));
 edge_t = mean(nbs.NBS.test_stat);
-edge_t(1) = [];%%% TODO THIS NEEDS TO BE DELETED ON THE REAL THING - IT'S ONLY HERE BC THE NBS OUTPUTS CORRESPOND TO THE REAL DATA AND DO NOT MATCH THIS TEST DATA
 [r_edge, p_edge] = corr(edge_t', ttest_ind','Type','Spearman');
 
 parcel_size_corr.r_degree = r_degree;
