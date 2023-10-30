@@ -29,6 +29,8 @@ Priscila T. Levi, Sidhant Chopra, James C. Pang, Alexander Holmes, Mehul Gajwani
 ->	This script calls _calc_ROI_exc_, _calc_homogeneity_, _calc_fc_separation_, _calc_parcel_size_diff_, _calc_vertices_change_, _plot_FCmat_, and _calc_FMmat_corr_.
    
    o	**calc_ROI_exc** -> makes a list of ROIs with low signal in per subject. This script is an adaptation of the method described in Brown et. al. 2019 (Supps). Last argument of this is optional and lets you choose if you want to find the overall biggest pair-wise difference in BOLD signal strength or the biggest pair-wise difference in the bottom half of lowest values as a threshold for signal dropout (in many instance the biggest pwd are caused by ROIs with higher than normal average BOLD and not lower than normal, so this will flag the majority of regions as having low signal – see figures below for example)
+   ![image](https://github.com/NSBLab/individualised_parc_psychosis/assets/89367888/15e1ed77-9e73-401e-9bc3-de36d05c4335)
+
     
    o	**calc_homogeneity** -> calculates activity homogeneity metric for every parcel, normalised by parcel size. Homogeneity is saved separate for patients and controls and p-values are calculated with permutation testing and FDR corrected. We also calculate intraclass correlation coefficient between runs.
     
