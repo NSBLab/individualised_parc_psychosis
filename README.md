@@ -45,6 +45,7 @@ Use the FC matrices saved at output/FC /{parc} as an input. NBS uses permutation
 
 # Citation
 If you use our code in your research, please cite us as follows:
+
 Priscila T. Levi, Sidhant Chopra, James C. Pang, Alexander Holmes, Mehul Gajwani, Tyler A. Sassenberg, Colin G. DeYoung, Alex Fornito; The effect of using group-averaged or individualized brain parcellations when investigating connectome dysfunction in psychosis. Network Neuroscience 2023; doi: https://doi.org/10.1162/netn_a_00329
 
 # Further information
