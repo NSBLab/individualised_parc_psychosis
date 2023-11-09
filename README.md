@@ -13,12 +13,6 @@ This code was written for analysis after processed fMRI data has been parcellate
 
 ***Scripts were tested on Matlab 2019a and R 4.1.0***
 
-Last updated: 31/10/23
-
-Written by Priscila T. Levi
-
-Priscila T. Levi, Sidhant Chopra, James C. Pang, Alexander Holmes, Mehul Gajwani, Tyler A. Sassenberg, Colin G. DeYoung, Alex Fornito; The effect of using group-averaged or individualized brain parcellations when investigating connectome dysfunction in psychosis. Network Neuroscience 2023; doi: https://doi.org/10.1162/netn_a_00329
-
 # RUNNING THEM:
 ## 1st step: 'setup.m'
 ->	You will need to add file paths for your GPIP outputs, path and name for a group-based parcellation annotation file and patients and control ID list.
@@ -48,3 +42,12 @@ Priscila T. Levi, Sidhant Chopra, James C. Pang, Alexander Holmes, Mehul Gajwani
 Use the FC matrices saved at output/FC /{parc} as an input. NBS uses permutation statistics to compare the FC matrices between two different groups (patients/controls), based on the understanding that significant impacts of pathophysiology will likely span a connected network, rather than isolated edges. For more information refer to https://www.nitrc.org/projects/nbs/.
 
 ## 4th step: Run script in code/post_NBS
+
+# Citation
+If you use our code in your research, please cite us as follows:
+Priscila T. Levi, Sidhant Chopra, James C. Pang, Alexander Holmes, Mehul Gajwani, Tyler A. Sassenberg, Colin G. DeYoung, Alex Fornito; The effect of using group-averaged or individualized brain parcellations when investigating connectome dysfunction in psychosis. Network Neuroscience 2023; doi: https://doi.org/10.1162/netn_a_00329
+
+# Further information
+Please contact priscila.thalenberglevi@monash.edu if you need further details.
+
+Last updated: 10/11/23
